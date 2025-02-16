@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado da Pesquisa</title>
+    <link rel="stylesheet" th:href="@{/css/listagem.css}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Resultados da Pesquisa</h2>
+
+
+    <form method="get" th:action="@{/tarefa/pesquisar}">
+
+
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" name="numero">
+
+
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo">
+
+        <label for="responsavel">Responsável:</label>
+        <select id="responsavel" name="responsavel">
+            <option value="">Todos</option>
+            <option th:each="responsavel : ${responsaveis}" th:value="${responsavel}" th:text="${responsavel}"></option>
+        </select>
+
+        <label for="situacao">Situação:</label>
+        <select id="situacao" name="situacao">
+            <option value="">Todas</option>
+            <option value="EM_ANDAMENTO">Em andamento</option>
+            <option value="CONCLUIDA">Concluído</option>
+        </select>
+
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Responsável</th>
+            <th>Situação</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tarefa : ${tarefas}">
+            <td th:text="${tarefa.id}"></td>
+            <td th:text="${tarefa.titulo}"></td>
+            <td th:text="${tarefa.responsavel}"></td>
+            <td th:text="${tarefa.situacao}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+    <a href="/tarefa/listar">
+        <button type="button">Voltar para Listagem de Tarefas</button>
+    </a>
+</div>
+
+</body>
+</html>

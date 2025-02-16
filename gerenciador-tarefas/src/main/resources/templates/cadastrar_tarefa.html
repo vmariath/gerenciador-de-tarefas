@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Tarefa</title>
+    <link rel="stylesheet" th:href="@{/css/cadastrar_tarefas.css}">
+</head>
+<body>
+<div class="container">
+    <h2>Cadastrar Tarefa</h2>
+    <form th:action="@{/tarefa/salvar}" method="post" th:object="${tarefa}">
+        <input type="hidden" th:field="*{id}" />
+
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" th:field="*{titulo}" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" th:field="*{descricao}" required></textarea>
+
+        <label for="responsavel">Responsável:</label>
+        <select id="responsavel" name="responsavel" th:field="*{responsavel}" required>
+            <option value="">Selecione</option>
+            <option th:each="resp : ${responsaveis}" th:value="${resp}" th:text="${resp}"></option>
+        </select>
+
+        <label for="prioridade">Prioridade:</label>
+        <select id="prioridade" name="prioridade" th:field="*{prioridade}" required>
+            <option value="">Selecione</option>
+            <option th:each="p : ${prioridades}" th:value="${p}" th:text="${p}"></option>
+        </select>
+
+        <label for="prazo">Prazo:</label>
+        <input type="date" id="prazo" name="prazo" th:field="*{prazo}" required>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <button onclick="window.history.back()">Voltar</button>
+</div>
+</body>
+</html>

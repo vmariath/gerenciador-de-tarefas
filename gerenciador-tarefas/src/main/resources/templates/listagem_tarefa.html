@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Tarefas</title>
+    <link rel="stylesheet" th:href="@{/css/listagem.css}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Listagem de Tarefas</h2>
+
+    <form method="get" th:action="@{/tarefa/pesquisar}">
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" name="numero">
+
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo">
+
+        <label for="responsavel">Responsável:</label>
+        <select id="responsavel" name="responsavel">
+            <option value="">Todos</option>
+            <option th:each="responsavel : ${responsaveis}"
+                    th:value="${responsavel}"
+                    th:text="${responsavel}"></option>
+        </select>
+
+        <label for="situacao">Situação:</label>
+        <select id="situacao" name="situacao">
+            <option value="">Todas</option>
+            <option value="EM_ANDAMENTO">Em andamento</option>
+            <option value="CONCLUIDA">Concluído</option>
+        </select>
+
+        <button type="submit">Buscar Tarefas</button>
+    </form>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Número</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Responsável</th>
+            <th>Prioridade</th>
+            <th>Prazo</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tarefa : ${tarefas}">
+            <td th:text="${tarefa.id}"></td>
+            <td th:text="${tarefa.titulo}"></td>
+            <td th:text="${tarefa.descricao}"></td>
+            <td th:text="${tarefa.responsavel}"></td>
+            <td th:text="${tarefa.prioridade}"></td>
+            <td th:text="${tarefa.prazoFormatado}"></td>
+            <td>
+                <form th:action="@{/tarefa/editar/{id}(id=${tarefa.id})}" method="get" style="display:inline;">
+                    <button type="submit">Editar</button>
+                </form> |
+                <form th:action="@{/tarefa/excluir/{id}(id=${tarefa.id})}" style="display:inline;"
+                      onsubmit="return confirm('Tem certeza que deseja excluir?');">
+                    <button type="submit">Excluir</button>
+                </form> |
+                <form th:action="@{/tarefa/concluir/{id}(id=${tarefa.id})}" method="post" style="display:inline;">
+                    <button type="submit">Concluir</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+    <a href="/tarefa/nova"><button type="button">Cadastrar outra Tarefa</button></a>
+</div>
+
+</body>
+</html>
