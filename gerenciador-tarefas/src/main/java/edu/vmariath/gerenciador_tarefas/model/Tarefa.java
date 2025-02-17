@@ -1,4 +1,4 @@
-package com.esig.vmariath.gerenciador_tarefas.model;
+package edu.vmariath.gerenciador_tarefas.model;
 
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;

@@ -1,6 +1,6 @@
-package com.esig.vmariath.gerenciador_tarefas.repository;
+package edu.vmariath.gerenciador_tarefas.repository;
 
-import com.esig.vmariath.gerenciador_tarefas.model.Tarefa;
+import edu.vmariath.gerenciador_tarefas.model.Tarefa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,7 +1,7 @@
-package com.esig.vmariath.gerenciador_tarefas.service;
+package edu.vmariath.gerenciador_tarefas.service;
 
-import com.esig.vmariath.gerenciador_tarefas.model.Tarefa;
-import com.esig.vmariath.gerenciador_tarefas.repository.TarefaRepository;
+import edu.vmariath.gerenciador_tarefas.model.Tarefa;
+import edu.vmariath.gerenciador_tarefas.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
