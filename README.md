@@ -32,12 +32,12 @@ Antes de rodar o projeto, você precisará ter as seguintes ferramentas instalad
 
 ## Configuração do Banco de Dados
 
-1. **Instale o PostgreSQL** e crie um banco de dados para a aplicação.
+1. **Instale o PostgreSQL** e crie um banco de dados com o nome de gerenciador_tarefas para a aplicação.
    
 2. No arquivo `application.properties`, configure as informações de conexão com o banco de dados:
 
    ```properties
-   spring.datasource.url=jdbc:postgresql://localhost:5432/gerenciadordetarefas
+   spring.datasource.url=jdbc:postgresql://localhost:5432/gerenciador_tarefas
    spring.datasource.username=seu_usuario
    spring.datasource.password=sua_senha
    spring.jpa.hibernate.ddl-auto=update
